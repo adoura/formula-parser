@@ -98,5 +98,8 @@
       "**/*.{js}",
       "!src/grammar-parser/**"
     ]
+  },
+  "publishConfig": {
+    "registry": "http://localhost:8081/repository/npm-hosted/"
   }
 }

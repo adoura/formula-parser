@@ -48,13 +48,13 @@ describe('.parse() miscellaneous formulas', () => {
     expect(parser.parse('NUMBERS("foo", 2, "bar", "foo")')).toMatchObject({error: null, result: [2]});
   });
 
-  it('REFERENCE', () => {
-    parser.on('callCellValue', (a, done) => {
-      if (a.label === 'A1') {
-        done({name: {firstName: 'Jim'}});
-      }
-    });
+  // it('REFERENCE', () => {
+  //   parser.on('callCellValue', (a, done) => {
+  //     if (a.label === 'A1') {
+  //       done({name: {firstName: 'Jim'}});
+  //     }
+  //   });
 
-    expect(parser.parse('REFERENCE(A1, "name.firstName")')).toMatchObject({error: null, result: 'Jim'});
-  });
+  //   expect(parser.parse('REFERENCE(A1, "name.firstName")')).toMatchObject({error: null, result: 'Jim'});
+  // });
 });

@@ -207,7 +207,14 @@ case 22:
 break;
 case 26: case 27: case 28:
 
-      this.$ = yy.cellValue($$[$0]);
+    if(yy.isFormula($$[1]))
+    {
+        this.$ = yy.callVariable($$[$0]);
+    }
+    else
+    {
+        this.$ = yy.cellValue($$[$0]);
+    }
 
 break;
 case 29: case 30: case 31: case 32: case 33: case 34: case 35: case 36: case 37:

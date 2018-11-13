@@ -5,6 +5,7 @@ import {trimEdges} from './helper/string';
 import {toNumber, invertNumber} from './helper/number';
 import errorParser, {isValidStrict as isErrorValid, ERROR, ERROR_NAME} from './error';
 import {extractLabel, toLabel} from './helper/cell';
+import SUPPORTED_FORMULAS from './supported-formulas';
 
 /**
  * @class Parser
@@ -20,6 +21,7 @@ class Parser extends Emitter {
       throwError: (errorName) => this._throwError(errorName),
       callVariable: (variable) => this._callVariable(variable),
       evaluateByOperator,
+      isFormula: (name) => this.isFormula(name),
       callFunction: (name, params) => this._callFunction(name, params),
       cellValue: (value) => this._callCellValue(value),
       rangeValue: (start, end) => this._callRangeValue(start, end),
@@ -127,6 +129,20 @@ class Parser extends Emitter {
     this.functions[name] = fn;
 
     return this;
+  }
+
+  /**
+   * check if name is formula name
+   *
+   * @param {String} name to check if it is formula name
+   * @returns {*}
+   */
+  isFormula(name) {
+    // console.log("formula name = "+name);
+    if (SUPPORTED_FORMULAS.indexOf(name.toUpperCase()) > -1) {
+      return true;
+    }
+    return false;
   }
 
   /**
