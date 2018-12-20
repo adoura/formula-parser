@@ -14,7 +14,7 @@
 [A-Za-z\.]+(?=[(])                                                                              {return 'FUNCTION';}
 [A-Za-z]{1,}[A-Za-z_0-9]+                                                                       {return 'VARIABLE';}
 [A-Za-z_]+                                                                                      {return 'VARIABLE';}
-[A-Za-z_0-9:]+                                                                                  {return 'VARIABLE';}
+[A-Za-z]{1,}[A-Za-z_0-9:]+                                                                       {return 'VARIABLE';}
 [0-9]+                                                                                          {return 'NUMBER';}
 '['(.*)?']'                                                                                     {return 'ARRAY';}
 "&"                                                                                             {return '&';}
